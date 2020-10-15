@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bd6fa2e0-d7cf-468f-8cd5-2ee64aa0da80",
+    "state": "100",
+    "power": "99",
+    "resources": [
+      {
+        "id": "2821ed4e-d165-4d5b-b0f4-99acc4e11a51",
+        "type": "temp",
+        "min": 13,
+        "max": 37
+      },
+      {
+        "id": "c8154cec-5819-42a0-ba40-6c8de95faf30",
+        "type": "pressure",
+        "min": 950,
+        "max": 1050
+      },
+      {
+        "id": "3286b360-8088-4caa-aca0-0fcf4d53e0cd",
+        "type": "humid",
+        "min": 50,
+        "max": 100
+      }
+    ]
+  },
+
+  {
+    "id": "3ff26789-3aac-4233-aafc-750be01ffb0e",
+    "state": "100",
+    "power": "80",
+    "resources": [
+      {
+        "id": "136259b4-64bc-4d6e-8338-4567cc8a7e60",
+        "type": "temp",
+        "min": 13,
+        "max": 37
+      },
+      {
+        "id": "323ab506-ddcf-4311-9776-c53df75dd4b1",
+        "type": "pressure",
+        "min": 950,
+        "max": 1050
+      },
+      {
+        "id": "16f90506-f152-4e1a-b805-5bd1f75a79b6",
+        "type": "humid",
+        "min": 50,
+        "max": 100
+      }
+    ]
+  }
+]
