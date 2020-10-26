@@ -9,10 +9,10 @@ export default class NodeServer {
         this.nodeGenerator = nodeGenerator
     }
 
-    run() {
+    run(baseUrl, path) {
         for (let node of this.nodes) {
             setInterval(() => {
-                axios.put('http://127.0.0.1:8080/api/node', node).then((response) => {
+                axios.put(baseUrl + path, node).then((response) => {
                     this.nodeGenerator.generateResources()
                 }).catch((err) => {
                     console.error(err)
