@@ -1,0 +1,13 @@
+{
+  "name": "Home_Reporter",
+  "version": "1.0.0",
+  "description": "Dev tool to mock sensor data",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
