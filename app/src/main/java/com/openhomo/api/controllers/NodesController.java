@@ -18,23 +18,15 @@ public class NodesController {
 
     @GetMapping(path = "api/nodes", produces = "application/json")
     public ResponseEntity<?> getNodes() {
-        Resource resource1 = new Resource("885076b7-5085-4618-a7ca-c92aebb91348", "temp", 21.2);
-        Resource resource2 = new Resource("1947c044-3d5e-4ec0-918f-19f9ceff6918", "press", 1033);
-        Resource resource3 = new Resource("289cc52e-4acf-4161-93aa-b549e3b4f7d9", "humid", 73.20);
-
         Resource[] resources = new Resource[3];
-        resources[0] = resource1;
-        resources[1] = resource2;
-        resources[2] = resource3;
-
-        Action actions1 = new Action("e235640d-6e67-485a-b44c-1cfaef6fcaa8", "switch", "off");
-        Action actions2 = new Action("7312dedc-75da-4d99-b5af-3e2c2a19dc9a", "therm", "25");
-        Action actions3 = new Action("63a01fee-d2e8-4032-8c3a-6f990f624326", "rotate", "180");
+        resources[0] = new Resource("885076b7-5085-4618-a7ca-c92aebb91348", "temp", 21.2);
+        resources[1] = new Resource("1947c044-3d5e-4ec0-918f-19f9ceff6918", "press", 1033);
+        resources[2] = new Resource("289cc52e-4acf-4161-93aa-b549e3b4f7d9", "humid", 73.20);
 
         Action[] actions = new Action[3];
-        actions[0] = actions1;
-        actions[1] = actions2;
-        actions[2] = actions3;
+        actions[0] = new Action("e235640d-6e67-485a-b44c-1cfaef6fcaa8", "switch", "off");
+        actions[1] = new Action("7312dedc-75da-4d99-b5af-3e2c2a19dc9a", "therm", "25");
+        actions[2] = new Action("63a01fee-d2e8-4032-8c3a-6f990f624326", "rotate", "180");
 
 
         Node node = new Node(
