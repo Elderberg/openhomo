@@ -10,13 +10,10 @@ services:
     volumes:
       - ./init-mongodb.js:/docker-entrypoint-initdb.d/mongo-init.js
 
-
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 8088:8081
     env_file:
       - ./../../../.env
-
-
