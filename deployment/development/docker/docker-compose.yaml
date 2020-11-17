@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   mongo:
-    image: mongo
+    image: mongo:latest
     restart: always
     env_file:
       - ./../../../.env
@@ -19,9 +19,15 @@ services:
       - ./../../../.env
 
   influxdb:
-    image: influxdb
+    image: influxdb:latest
     restart: always
     env_file:
-      - ./../../../.env
+      - influxdb.env
     ports:
       - 8086:8086
+    environment:
+      - INFLUXDB_ADMIN_USER=${INFLUX_ADMIN_USER}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUX_ADMIN_PASSWORD}
+      - INFLUXDB_DB=db1
+      - INFLUXDB_USER=${INFLUX_USER}
+      - INFLUXDB_PASSWORD=${INFLUX_PASSWORD}
