@@ -1,18 +1,29 @@
 package com.openhomo.api.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openhomo.api.nodes.Action;
 import com.openhomo.api.nodes.Node;
 import com.openhomo.api.nodes.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class NodesController {
 
+    @Autowired
+    private SimpMessagingTemplate webSocket;
+
+    ObjectMapper objectMapper = new ObjectMapper();
+
     @PutMapping(path = "/api/nodes", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> checkNode(@RequestBody Node node) {
+    public ResponseEntity<?> checkNode(@RequestBody Node node) throws JsonProcessingException {
         System.out.println(node.getState());
+        String classNode = objectMapper.writeValueAsString(node);
+        webSocket.convertAndSend("/ws/nodes", classNode);
         return new ResponseEntity<Node>(node, HttpStatus.OK);
     };
 

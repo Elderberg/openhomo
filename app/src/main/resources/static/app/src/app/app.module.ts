@@ -20,7 +20,7 @@ import {WebSocketConfig} from "./api/WebSocketConfig";
     {
       provide: RxStompService,
       useFactory: rxStompServiceFactory,
-      deps: [InjectableRxStompConfig],
+      deps: [InjectableRxStompConfig]
     },
   ],
   bootstrap: [AppComponent]

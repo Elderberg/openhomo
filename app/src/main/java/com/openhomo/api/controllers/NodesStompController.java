@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class NodesStompController {
 
-    @MessageMapping("/hello")
-    @SendTo("/topic")
-    public Node sendNodes(ResponseBody object) {
+    @MessageMapping("/ws")
+    @SendTo("/ws/nodes")
+    public Node sendNodes(String object) {
         System.out.println(object);
         return new Node(object + "dg", 100, 100, "fuk", "jooo", "dgf", new Resource[3], new Action[3]);
     }

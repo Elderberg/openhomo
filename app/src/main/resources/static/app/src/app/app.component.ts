@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {WebSocketService} from "./services/web-socket.service";
-import * as Stomp from '@stomp/ng2-stompjs';
 import {RxStompService} from "@stomp/ng2-stompjs";
 
 
@@ -11,13 +9,12 @@ import {RxStompService} from "@stomp/ng2-stompjs";
 })
 export class AppComponent {
 
-  text = "hello"
+  text;
   title = 'app';
-  webSocket: WebSocket;
-  client;
 
   constructor(private stompService: RxStompService) {
 
+    this.stompService.watch('/ws/nodes').subscribe(data => {this.text = data.body;}  )
   }
 
   connect = () => {
@@ -25,7 +22,9 @@ export class AppComponent {
   }
 
   send = () => {
-    this.stompService.publish({destination: '/hello', body: 'gerne'});
+    this.stompService.publish({destination: '/ws', body: `${Math.random()}`});
   }
+
+
 
 }
