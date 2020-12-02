@@ -1,0 +1,8 @@
+<mat-drawer-container  color="#ff6ff" hasBackdrop="true">
+  <mat-drawer #drawer mode="over">
+    <app-unregistered></app-unregistered>
+  </mat-drawer>
+  <mat-drawer-content>
+    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+  </mat-drawer-content>
+</mat-drawer-container>

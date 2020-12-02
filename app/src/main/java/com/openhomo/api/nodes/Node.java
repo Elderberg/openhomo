@@ -1,5 +1,7 @@
 package com.openhomo.api.nodes;
 
+import java.sql.Timestamp;
+
 public class Node {
 
     private final String id;
@@ -8,6 +10,7 @@ public class Node {
     private final String name;
     private final String description;
     private final String roomId;
+    private static long timestamp;
 
     private final Resource[] resources;
 
@@ -55,4 +58,13 @@ public class Node {
     public String getRoomId() {
         return roomId;
     }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public long setTimestamp(long time) {
+        return timestamp = time;
+    }
+
 }

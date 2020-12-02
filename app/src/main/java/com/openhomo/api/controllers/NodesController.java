@@ -1,7 +1,5 @@
 package com.openhomo.api.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openhomo.api.nodes.Action;
 import com.openhomo.api.nodes.Node;
 import com.openhomo.api.nodes.Resource;
@@ -11,19 +9,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.*;
+
 @RestController
 public class NodesController {
 
     @Autowired
     private SimpMessagingTemplate webSocket;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    private HashMap<String, Node> unregisteredNodes = new HashMap();
+
 
     @PutMapping(path = "/api/nodes", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> checkNode(@RequestBody Node node) throws JsonProcessingException {
-        System.out.println(node.getState());
-        String classNode = objectMapper.writeValueAsString(node);
-        webSocket.convertAndSend("/ws/nodes", classNode);
+    public ResponseEntity<?> checkNode(@RequestBody Node node) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        node.setTimestamp(timestamp.getTime());
+        updateUnregistered(node);
+        webSocket.convertAndSend("/ws/nodes/unregistered", node);
         return new ResponseEntity<Node>(node, HttpStatus.OK);
     };
 
@@ -49,5 +52,15 @@ public class NodesController {
                 "0ca68913-7484-4623-8b65-4561f886ae15",
                 resources, actions);
         return new ResponseEntity<>(node, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "api/nodes/unregistered", produces = "application/json")
+    @CrossOrigin("http://localhost:4200")
+    public ResponseEntity<?> getUnregisteredNodes() {
+        return new ResponseEntity<>(unregisteredNodes.values().toArray(), HttpStatus.OK);
+    }
+
+    private void updateUnregistered(Node node) {
+        unregisteredNodes.put(node.getId(), node);
     }
 }
