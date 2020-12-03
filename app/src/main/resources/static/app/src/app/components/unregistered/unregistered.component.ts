@@ -24,20 +24,15 @@ export class UnregisteredComponent implements OnInit {
     this.unregistered.connect();
     this.unregistered.getNodeList().subscribe(nodes => {
       this.nodeList = nodes;
-      console.log(nodes)
     })
   }
 
-  addNode = (id) => {
-    console.log('Added Node ' + id)
+  addNode(node): void {
     const dialogRef = this.dialog.open(AddNodeDialogComponent, {
-      width: '500px',
-      data: {id}
+      data: node
     });
-  }
 
-  isOpen = () => {
-    return 'disabled-pointer'
+    dialogRef.afterClosed().subscribe(() => this.unregistered.initNodeList());
   }
 
 

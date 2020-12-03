@@ -54,8 +54,14 @@ public class NodesController {
         return new ResponseEntity<>(node, HttpStatus.OK);
     }
 
-    @GetMapping(path = "api/nodes/unregistered", produces = "application/json")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping(path = "api/nodes/add", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Node> addNewNode(@RequestBody Node node) {
+        return new ResponseEntity<Node>(node, HttpStatus.CREATED);
+    }
+
     @CrossOrigin("http://localhost:4200")
+    @GetMapping(path = "api/nodes/unregistered", produces = "application/json")
     public ResponseEntity<?> getUnregisteredNodes() {
         return new ResponseEntity<>(unregisteredNodes.values().toArray(), HttpStatus.OK);
     }

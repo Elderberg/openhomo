@@ -11,6 +11,10 @@ import {MatTableModule} from "@angular/material/table";
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatSidenavModule,
     MatBadgeModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTabsModule
 
   ], exports: [
     MatMenuModule,
@@ -36,7 +44,11 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatSidenavModule,
     MatBadgeModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }

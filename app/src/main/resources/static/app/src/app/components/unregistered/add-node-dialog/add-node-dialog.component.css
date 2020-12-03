@@ -1,0 +1,12 @@
+form, mat-tab-group, mat-form-field {
+  width: 100%;
+}
+
+.resources, .actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.resources > div, .actions > div {
+  margin: 0rem 1rem;
+}

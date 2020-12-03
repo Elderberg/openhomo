@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import { HomeComponent } from './components/home/home.component';
 import { AddNodeDialogComponent } from './components/unregistered/add-node-dialog/add-node-dialog.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { AddNodeDialogComponent } from './components/unregistered/add-node-dialo
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

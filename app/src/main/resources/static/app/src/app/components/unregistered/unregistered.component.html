@@ -28,7 +28,7 @@
             <button mat-icon-button>
               <mat-icon [ngStyle]="{'transform': node.isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" (click)="mep.expanded = !mep.expanded">expand_more</mat-icon>
             </button>
-            <button mat-icon-button (click)="addNode(node.id)">
+            <button mat-icon-button (click)="addNode(node)">
               <mat-icon>add</mat-icon>
             </button>
             <button mat-icon-button [matMenuTriggerFor]="actions">
