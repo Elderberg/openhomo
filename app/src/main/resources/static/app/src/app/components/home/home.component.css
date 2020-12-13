@@ -6,4 +6,35 @@ mat-drawer {
   width: 50%;
 }
 
+mat-drawer-content {
+  padding: 0 1rem;
+}
+
+
+.resources {
+  display: flex;
+}
+
+mat-expansion-panel {
+  margin: 1rem 1rem;
+}
+
+
+
+.resources > div {
+  margin: 0 .3rem;
+}
+
+.resources > div:first-child {
+  margin-left: 0;
+}
+
+mat-icon {
+  transition-duration: .3s;
+}
+
+.mat-header-cell {
+  min-width: 3rem;
+}
+
 

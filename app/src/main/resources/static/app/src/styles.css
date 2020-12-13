@@ -23,6 +23,7 @@ app-unregistered mat-expansion-panel-header > span {
   justify-content: space-between;
 }
 
+app-home .mat-expansion-panel-header[aria-disabled=true],
 app-unregistered .mat-expansion-panel-header[aria-disabled=true] {
   color: rgba(0, 0, 0, 1);
 }

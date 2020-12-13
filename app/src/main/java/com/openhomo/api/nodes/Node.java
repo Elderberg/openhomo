@@ -1,9 +1,10 @@
 package com.openhomo.api.nodes;
 
-import java.sql.Timestamp;
+import org.springframework.data.annotation.Id;
 
 public class Node {
 
+    @Id
     private final String id;
     private final int state;
     private final int power;

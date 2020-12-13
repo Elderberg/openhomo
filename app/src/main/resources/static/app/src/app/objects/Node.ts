@@ -13,4 +13,6 @@ export class Node {
       value: number
     }
   ];
+  timestamp: number;
+  isExpanded?: boolean;
 }
