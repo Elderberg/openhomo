@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined';
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 
@@ -30,4 +31,9 @@ app-unregistered .mat-expansion-panel-header[aria-disabled=true] {
 
 app-unregistered .mat-accordion>.mat-expansion-panel-spacing:last-child {
   margin-bottom: 1rem;
+}
+
+app-home svg text {
+  font-size: 1.3rem;
+  word-break: break-all;
 }

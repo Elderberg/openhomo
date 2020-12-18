@@ -1,8 +1,3 @@
-<div class="header mat-h3">
-  <div>New nodes</div>
-</div>
-
-
 <mat-accordion *ngFor="let node of nodeList">
   <mat-expansion-panel disabled="true" hideToggle
                        (opened)="node.isExpanded = true"

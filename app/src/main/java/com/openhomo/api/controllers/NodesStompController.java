@@ -13,9 +13,9 @@ public class NodesStompController {
 
     @MessageMapping("/ws")
     @SendTo("/ws/nodes")
-    public Node sendNodes(String object) {
+    public String sendNodes(String object) {
         System.out.println(object);
-        return new Node(object + "dg", 100, 100, "fuk", "jooo", "dgf", new Resource[3], new Action[3]);
+        return object;
     }
 
 }

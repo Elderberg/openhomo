@@ -1,44 +1,42 @@
 <mat-drawer-container  color="#ff6ff" hasBackdrop="true">
   <mat-drawer #drawer mode="over">
+    <div class="header mat-h3">
+      <div>New nodes</div>
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon fontSet="material-icons-outlined">navigate_before</mat-icon>
+      </button>
+    </div>
     <app-unregistered></app-unregistered>
   </mat-drawer>
   <mat-drawer-content>
-    <div><button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button></div>
-
-    <mat-accordion *ngFor="let node of nodeList">
-      <mat-expansion-panel disabled="true" hideToggle
-                           (opened)="node.isExpanded = true"
-                           (closed)="node.isExpanded = false"
-                           #mep="matExpansionPanel">
-        <mat-expansion-panel-header>
-          <div>
-            <div class="mat-header-cell">Name</div>
-            {{node.name}}
-          </div>
-          <div>
-            <div class="mat-header-cell">Data</div>
-            <div class="resources" *ngIf="node.resources">
-              <div *ngFor="let resource of node.resources">
-                <div *ngIf="resource.type == resourceTypes.TEMP">{{resource.value}}°C</div>
-                <div *ngIf="resource.type == resourceTypes.HUMID">{{resource.value}}%</div>
-                <div *ngIf="resource.type == resourceTypes.PRESSURE">{{resource.value}} hPa</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button mat-icon-button>
-              <mat-icon [ngStyle]="{'transform': node.isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'}" (click)="mep.expanded = !mep.expanded">expand_more</mat-icon>
-            </button>
-            <button mat-icon-button (click)="deleteNode(node.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
 
 
 
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </mat-accordion>
+
+    <div id="content">
+
+      <div id="siteHeader">
+        <img src="../../../assets/svg/OpenHomoSens_Logo_Full.svg">
+
+        <div id="buttonGroup">
+          <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="view === 'map'" (click)="view = 'list'">
+            <mat-icon fontSet="material-icons-outlined">format_list_bulleted</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="view ==='list'" (click)="view = 'map'">
+            <mat-icon fontSet="material-icons-outlined">explore</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div id="main">
+        <app-node-map *ngIf="view === 'map'"></app-node-map>
+        <app-node-list *ngIf="view ==='list'"></app-node-list>
+
+      </div>
+    </div>
+
+    <app-gauge-panel></app-gauge-panel>
   </mat-drawer-content>
 </mat-drawer-container>

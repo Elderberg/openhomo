@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add node</h1>
+<h1 mat-dialog-title (click)="debug()">Add node</h1>
 <div mat-dialog-content>
   <mat-tab-group mat-align-tabs="start" dynamicHeight>
     <mat-tab label="General">
@@ -107,6 +107,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
-  <button mat-button [disabled]="!node.valid" (click)="addNode()">Add</button>
+  <button mat-button [disabled]="(!node.valid || (!room.valid && node.value.roomId === 'newRoom'))" (click)="addNode()">Add</button>
 </div>
 

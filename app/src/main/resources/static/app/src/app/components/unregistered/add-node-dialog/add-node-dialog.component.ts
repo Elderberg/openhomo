@@ -3,6 +3,7 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Node} from "../../../objects/Node";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {NodeService} from "../../../services/node.service";
+import {RoomService} from "../../../services/room.service";
 
 @Component({
   selector: 'app-add-node-dialog',
@@ -25,28 +26,30 @@ export class AddNodeDialogComponent implements OnInit {
   })
 
 
-  rooms = [
-    {name: 'Living Room', id: 'dfge54'},
-    {name: 'Kitchen', id: 'dfge434454'},
-    {name: 'Alex Room', id: 'dfdfdfge54'}
-  ]
+  rooms = []
 
-  constructor(@Inject(MAT_DIALOG_DATA) public nodeData: Node, private nodeService: NodeService, private dialog: MatDialog) {
-    this.getResources();
-    this.getActions();
+  constructor(@Inject(MAT_DIALOG_DATA) public nodeData: Node, private nodeService: NodeService, private roomService: RoomService, private dialog: MatDialog) {
+
     console.log(this.node)
   }
 
+
+
+
+  ngOnInit(): void {
+    this.roomService.getRooms().subscribe((rooms: any) => {
+      this.rooms = rooms;
+    })
+
+    this.getResources();
+    this.getActions();
+  }
 
   get resources() {
     return this.node.get('resources') as FormArray;
   }
   get actions() {
     return this.node.get('actions') as FormArray;
-  }
-
-
-  ngOnInit(): void {
   }
 
   getResources = () => {
@@ -79,10 +82,31 @@ export class AddNodeDialogComponent implements OnInit {
   }
 
   addNode = () => {
-    this.nodeService.addNode(this.mergeObjects(this.nodeData, this.node.value)).subscribe(response => {
-      response.status === 201 ? this.dialog.closeAll() : console.log('Error! Received unexpected response: ' + response.status);
-    })
+    if (this.node.value.roomId === 'newRoom' && this.room.value.name) {
+      this.roomService.addRoom(this.room.value).subscribe((response: any) => {
+        if (response.status === 201 && response.body.id) {
+          this.node.value.roomId = response.body.id
+          this.nodeService.addNode(this.mergeObjects(this.nodeData, this.node.value)).subscribe(response => {
+            response.status === 201 ? this.dialog.closeAll() : console.log('Error! Received unexpected response: ' + response.status);
+          })
+        }
+      })
+    } else if (this.node.value.roomId && this.node.value.roomId !== 'newRoom') {
+      this.nodeService.addNode(this.mergeObjects(this.nodeData, this.node.value)).subscribe(response => {
+        response.status === 201 ? this.dialog.closeAll() : console.log('Error! Received unexpected response: ' + response.status);
+      })
+    } else {
+      console.log('Error while adding Node!')
+    }
 
+
+
+
+  }
+
+
+  debug = () => {
+    console.log(this.node.value)
   }
 
 }

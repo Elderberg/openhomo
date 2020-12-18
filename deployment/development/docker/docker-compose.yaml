@@ -30,6 +30,12 @@ services:
     environment:
       - INFLUXDB_ADMIN_USER=${INFLUX_ADMIN_USER}
       - INFLUXDB_ADMIN_PASSWORD=${INFLUX_ADMIN_PASSWORD}
-      - INFLUXDB_DB=db1
+      - INFLUXDB_DB=nodes
       - INFLUXDB_USER=${INFLUX_USER}
       - INFLUXDB_PASSWORD=${INFLUX_PASSWORD}
+
+  grafana:
+    image: grafana/grafana:7.3.5
+    ports:
+      - 3000:3000
+    user: "104"

@@ -2,6 +2,8 @@ package com.openhomo.api.nodes;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.ArrayList;
+
 public class Node {
 
     @Id
@@ -13,19 +15,19 @@ public class Node {
     private final String roomId;
     private static long timestamp;
 
-    private final Resource[] resources;
+    private final ArrayList<Resource> resources;
+    private final ArrayList<Action> actions;
 
-    public Resource[] getResources() {
+    public ArrayList<Resource> getResources() {
         return resources;
     }
 
-    public Action[] getActions() {
+    public ArrayList<Action> getActions() {
         return actions;
     }
 
-    private final Action[] actions;
 
-    public Node(String id, int state, int power, String name, String description, String roomId, Resource[] resources, Action[] actions) {
+    public Node(String id, int state, int power, String name, String description, String roomId, ArrayList<Resource> resources, ArrayList<Action> actions) {
         this.id = id;
         this.state = state;
         this.power = power;

@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Node} from "../../objects/Node";
-import {NodeService} from "../../services/node.service";
-import {ResourceTypes} from "../../pipes/resourceTypes.enum";
+import {Component, OnInit, } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,21 +7,19 @@ import {ResourceTypes} from "../../pipes/resourceTypes.enum";
 })
 export class HomeComponent implements OnInit {
 
-  nodeList: Node[];
-  resourceTypes = ResourceTypes;
 
-  constructor(private nodeService: NodeService) { }
 
-  ngOnInit(): void {
-    this.nodeService.getNodes().subscribe((nodes: Node[] )=> {
-      this.nodeList = nodes;
-    })
+  view = 'map';
+
+  constructor() {
   }
 
-  deleteNode = (id) => {
-    this.nodeService.deleteNode(id).subscribe(response => {
-      response.status !== 200 ? console.log(`Error! Response: ${response.status}`) : ''
-    });
+
+
+
+
+  ngOnInit(): void {
+
   }
 
 }

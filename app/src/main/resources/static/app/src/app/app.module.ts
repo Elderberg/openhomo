@@ -11,6 +11,9 @@ import {MaterialModule} from "./material/material.module";
 import { HomeComponent } from './components/home/home.component';
 import { AddNodeDialogComponent } from './components/unregistered/add-node-dialog/add-node-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NodeListComponent } from './components/node-list/node-list.component';
+import { GaugePanelComponent } from './components/gauge-panel/gauge-panel.component';
+import { NodeMapComponent } from './components/node-map/node-map.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     UnregisteredComponent,
     HomeComponent,
-    AddNodeDialogComponent
+    AddNodeDialogComponent,
+    NodeListComponent,
+    GaugePanelComponent,
+    NodeMapComponent
   ],
   imports: [
     BrowserModule,

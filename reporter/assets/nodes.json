@@ -1,6 +1,6 @@
 [
   {
-    "id": "bd6fa2e0-d7cf-468f-8cd5-2ee64aa0da80",
+    "id": "a1280165-201f-461b-9dba-3425fd33192c",
     "state": "100",
     "power": "99",
     "resources": [
@@ -13,20 +13,20 @@
       {
         "id": "c8154cec-5819-42a0-ba40-6c8de95faf30",
         "type": "pressure",
-        "min": 950,
-        "max": 1050
+        "min": 1013,
+        "max": 1020
       },
       {
         "id": "3286b360-8088-4caa-aca0-0fcf4d53e0cd",
         "type": "humid",
-        "min": 50,
-        "max": 100
+        "min": 40,
+        "max": 80
       }
     ]
   },
 
   {
-    "id": "3ff26789-3aac-4233-aafc-750be01ffb0e",
+    "id": "8351de70-baee-425b-847e-a088ed7c1c65",
     "state": "100",
     "power": "80",
     "resources": [
@@ -39,14 +39,14 @@
       {
         "id": "323ab506-ddcf-4311-9776-c53df75dd4b1",
         "type": "pressure",
-        "min": 950,
-        "max": 1050
+        "min": 1013,
+        "max": 1020
       },
       {
         "id": "16f90506-f152-4e1a-b805-5bd1f75a79b6",
         "type": "humid",
-        "min": 50,
-        "max": 100
+        "min": 40,
+        "max": 80
       }
     ]
   }
