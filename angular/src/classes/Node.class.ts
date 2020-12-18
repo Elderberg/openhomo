@@ -1,6 +1,7 @@
 export class Node {
   id: string;
   name: string;
+  description: string;
   roomId: string;
   resources: [
     {

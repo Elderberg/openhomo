@@ -16,10 +16,10 @@ export class ExplorerNewNodesPanelComponent implements OnInit {
   nodeList: Node[];
   resourceTypes: typeof ResourceTypes = ResourceTypes;
 
-  constructor(private dialog: MatDialog, private nodes: ExplorerNodesService) { }
+  constructor(private dialog: MatDialog, private nodesService: ExplorerNodesService) { }
 
   ngOnInit(): void {
-    this.nodes.getNewNodes().subscribe((data: Node[]) => {
+    this.nodesService.getNewNodes().subscribe((data: Node[]) => {
       this.nodeList = data;
       console.log(data)
     })
@@ -32,7 +32,7 @@ export class ExplorerNewNodesPanelComponent implements OnInit {
 
     // reloads unregistered list after successful adding
     dialogRef.afterClosed().subscribe(() => {
-      this.nodes.getNewNodes().subscribe((data: Node[]) => {
+      this.nodesService.getNewNodes().subscribe((data: Node[]) => {
         this.nodeList = data;
       })
     });

@@ -7,7 +7,9 @@ import { ExplorerDeleteDialogComponent } from './components/explorer-delete-dial
 import { ExplorerAddNodeDialogComponent } from './components/explorer-add-node-dialog/explorer-add-node-dialog.component';
 import { ExplorerNodeListPanelComponent } from './components/explorer-node-list-panel/explorer-node-list-panel.component';
 import { ExplorerNavHeaderPanelComponent } from './components/explorer-nav-header-panel/explorer-nav-header-panel.component';
-import {MaterialModule} from "./material.module";
+import { MaterialModule } from './modules/material.module';
+import { ExplorerSnackBarAlertComponent } from './components/explorer-snack-bar-alert/explorer-snack-bar-alert.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -18,7 +20,8 @@ import {MaterialModule} from "./material.module";
     ExplorerDeleteDialogComponent,
     ExplorerAddNodeDialogComponent,
     ExplorerNodeListPanelComponent,
-    ExplorerNavHeaderPanelComponent
+    ExplorerNavHeaderPanelComponent,
+    ExplorerSnackBarAlertComponent
   ],
   exports: [
     ExplorerNavHeaderPanelComponent,
@@ -30,7 +33,8 @@ import {MaterialModule} from "./material.module";
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class ComponentsModule { }
