@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'add-node-dialog',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExplorerAddNodeDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }

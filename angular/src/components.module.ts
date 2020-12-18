@@ -7,6 +7,7 @@ import { ExplorerDeleteDialogComponent } from './components/explorer-delete-dial
 import { ExplorerAddNodeDialogComponent } from './components/explorer-add-node-dialog/explorer-add-node-dialog.component';
 import { ExplorerNodeListPanelComponent } from './components/explorer-node-list-panel/explorer-node-list-panel.component';
 import { ExplorerNavHeaderPanelComponent } from './components/explorer-nav-header-panel/explorer-nav-header-panel.component';
+import {MaterialModule} from "./material.module";
 
 
 
@@ -28,7 +29,8 @@ import { ExplorerNavHeaderPanelComponent } from './components/explorer-nav-heade
     ExplorerDeleteDialogComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class ComponentsModule { }

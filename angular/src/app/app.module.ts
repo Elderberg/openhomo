@@ -5,11 +5,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ComponentsModule} from "../components.module";
 
-import {MaterialModule} from "./material.module";
-
 // WebSocket imports
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from "@stomp/ng2-stompjs";
 import {RxStompConfig} from "../configurations/rx-stomp.config";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,8 +16,8 @@ import {RxStompConfig} from "../configurations/rx-stomp.config";
   ],
   imports: [
     ComponentsModule,
-    MaterialModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     {
