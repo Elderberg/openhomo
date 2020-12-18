@@ -9,6 +9,7 @@ import { ComponentsModule} from "../components.module";
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from "@stomp/ng2-stompjs";
 import {RxStompConfig} from "../configurations/rx-stomp.config";
 import {HttpClientModule} from "@angular/common/http";
+import {MaterialModule} from '../modules/material.module.js';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     ComponentsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [
     {

@@ -1,5 +1,8 @@
-<nav-header-panel></nav-header-panel>
-<node-list-panel></node-list-panel>
-<new-nodes-panel></new-nodes-panel>
-<gauge-panel></gauge-panel>
-<delete-dialog></delete-dialog>
+<mat-drawer-container  color="#ff6ff" hasBackdrop="true">
+  <mat-drawer #drawer mode="over">
+    <new-nodes-panel></new-nodes-panel>
+  </mat-drawer>
+  <mat-drawer-content>
+    <nav-header-panel [drawer]="drawer"></nav-header-panel>
+  </mat-drawer-content>
+</mat-drawer-container>
