@@ -3,6 +3,8 @@ export class Node {
   name: string;
   description: string;
   roomId: string;
+  resourceIds: string[];
+  actionIds: string[];
   resources: [
     {
       id: string;
@@ -17,6 +19,8 @@ export class Node {
       value: number;
     }
   ];
+  state: number;
+  power: number;
   timestamp: number;
   isExpanded: boolean;
 }

@@ -2,52 +2,35 @@ package com.openhomo.api.nodes;
 
 import org.springframework.data.annotation.Id;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Node {
 
     @Id
     private final String id;
-    private final int state;
-    private final int power;
     private final String name;
     private final String description;
     private final String roomId;
-    private static long timestamp;
-
-    private final ArrayList<Resource> resources;
-    private final ArrayList<Action> actions;
-
-    public ArrayList<Resource> getResources() {
-        return resources;
-    }
-
-    public ArrayList<Action> getActions() {
-        return actions;
-    }
+    private final int state;
+    private final int power;
+    private final ArrayList<String> resourceIds;
+    private final ArrayList<String> actionIds;
 
 
-    public Node(String id, int state, int power, String name, String description, String roomId, ArrayList<Resource> resources, ArrayList<Action> actions) {
+    public Node(String id, String name, String description, String roomId, int state, int power, ArrayList<String> resourceIds, ArrayList<String> actionIds) {
         this.id = id;
-        this.state = state;
-        this.power = power;
         this.name = name;
         this.description = description;
         this.roomId = roomId;
-        this.resources = resources;
-        this.actions = actions;
+        this.state = state;
+        this.power = power;
+        this.resourceIds = resourceIds;
+        this.actionIds = actionIds;
     }
 
     public String getId() {
-        return this.id;
-    }
-
-    public int getState() {
-        return this.state;
-    }
-
-    public int getPower() {
-        return power;
+        return id;
     }
 
     public String getName() {
@@ -62,12 +45,19 @@ public class Node {
         return roomId;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public int getState() {
+        return state;
     }
 
-    public long setTimestamp(long time) {
-        return timestamp = time;
+    public int getPower() {
+        return power;
     }
 
+    public ArrayList<String> getResourceIds() {
+        return resourceIds;
+    }
+
+    public ArrayList<String> getActionIds() {
+        return actionIds;
+    }
 }

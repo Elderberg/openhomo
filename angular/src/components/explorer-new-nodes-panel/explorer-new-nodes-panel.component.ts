@@ -25,18 +25,13 @@ export class ExplorerNewNodesPanelComponent implements OnInit {
   ngOnInit(): void {
     this.nodesService.getNewNodes().subscribe((data: Node[]) => {
       this.nodeList = data;
-      console.log(data)
     })
 
     this.nodesService.stompNewNodes().subscribe((message ) => {
-      console.log('Message came')
       this.nodeList.forEach((node: Node, index) => {
-        console.log(message)
         if (node.id !== JSON.parse(message.body).id) return;
         this.nodeList[index] = JSON.parse(message.body);
       })
-
-      console.log(this.nodeList)
     })
 
     setInterval(() => {
