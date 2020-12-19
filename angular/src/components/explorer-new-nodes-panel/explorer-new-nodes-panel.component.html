@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="panelHeader">
+
+    <h2><mat-icon>bubble_chart</mat-icon>New nodes</h2>
+    <button mat-icon-button (click)="drawer.toggle()"><mat-icon>cancel</mat-icon></button>
+  </div>
+
+
+  <mat-accordion *ngFor="let node of nodeList">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <div class="expansionHeaderTime">
+          <div class="mat-header-cell">Last updated</div>
+          {{node.timestamp | dateAgo: currentTime }}
+        </div>
+        <div class="expansionHeaderData">
+          <div class="mat-header-cell">Data</div>
+          <div class="resourcesData" *ngIf="node.resources">
+            <div *ngFor="let resource of node.resources">
+              <div *ngIf="resource.type == resourceTypes.TEMP">{{resource.value}}°C</div>
+              <div *ngIf="resource.type == resourceTypes.HUMID">{{resource.value}}%RH</div>
+              <div *ngIf="resource.type == resourceTypes.PRESSURE">{{resource.value}} hPa</div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="buttonGroup" (click)="$event.stopPropagation()">
+          <button mat-icon-button (click)="addNode(node)">
+            <mat-icon>add</mat-icon>
+          </button>
+<!--          <mat-menu #actions="matMenu">-->
+<!--            <button mat-menu-item>-->
+<!--              <mat-icon>visibility_off</mat-icon>-->
+<!--              <span>Hide</span>-->
+<!--            </button>-->
+<!--            <button mat-menu-item>-->
+<!--              <mat-icon>delete</mat-icon>-->
+<!--              <span>Delete</span>-->
+<!--            </button>-->
+<!--          </mat-menu>-->
+        </div>
+
+
+
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+
+

@@ -1,0 +1,93 @@
+.container {
+  width: 30rem;
+  height: 100%;
+
+  background-color: #d5fefd;
+  background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+  box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75);
+
+  display: flex;
+  flex-direction: column;
+
+  .panelHeader {
+    width: 100%;
+    height: 3rem;
+
+    background-color: #d5fefd;
+    background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+    box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1rem;
+
+    button {
+      margin-right: .5rem;
+    }
+
+    h2 {
+      margin: 0 1rem;
+
+      mat-icon {
+        margin-right: .1rem;
+        vertical-align: text-top;
+      }
+    }
+  }
+
+  mat-accordion {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+mat-expansion-panel {
+  box-shadow: none!important;
+  border-radius: .8rem!important;
+  border: 2px solid rgba(0,0,0, .87);
+}
+
+mat-expansion-panel-header {
+  min-height: 5rem!important;
+  height: auto!important;
+  padding-left: 1rem;
+}
+
+.expansionHeaderTime, .expansionHeaderData, .buttonGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.expansionHeaderTime {
+  min-width: 7rem;
+  margin-right: 1rem;
+}
+
+.expansionHeaderData {
+  width: 100%;
+}
+
+
+.buttonGroup {
+  flex-direction: row;
+  color: rgba(0,0,0, .54);
+
+  width: 1rem;
+
+  margin-top: 4px;
+  margin-right: 1rem;
+}
+
+.resourcesData {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+
+  & > div {
+    margin-right: 1rem;
+  }
+}
+

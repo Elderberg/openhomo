@@ -1,0 +1,112 @@
+<h1 mat-dialog-title>Add node</h1>
+<div mat-dialog-content>
+  <mat-tab-group mat-align-tabs="start" dynamicHeight>
+    <mat-tab label="General">
+      <div>
+        <form [formGroup]="nodeForm">
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Smart Thermostat..." formControlName="name">
+              <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>
+              <mat-hint>*Optional</mat-hint>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Room</mat-label>
+              <mat-select formControlName="roomId">
+                <mat-option *ngFor="let room of rooms" [value]="room.id">
+                  {{room.name}}
+                </mat-option>
+                <mat-option value="newRoom">
+                  Add room
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+        </form>
+      </div>
+      <div *ngIf="nodeForm.value['roomId'] == 'newRoom'">
+        <h2>Add new room</h2>
+        <form [formGroup]="roomForm">
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Kitchen" formControlName="name">
+              <mat-error *ngIf="roomForm.invalid">Mandatory</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Main kitchen on the right..." formControlName="description"></textarea>
+              <mat-hint>*Optional</mat-hint>
+            </mat-form-field>
+          </p>
+        </form>
+      </div>
+    </mat-tab>
+    <mat-tab label="Resources">
+      <form class="resources" [formGroup]="nodeForm">
+        <h4 *ngIf="!node.resources" class="mat-error">No resources found!</h4>
+        <ng-template formArrayName="resources" ngFor [ngForOf]="resourcesForm.controls" let-i="index">
+          <div [formGroupName]="i">
+            <h3>Type: {{node.resources[i].type}}</h3>
+            <h4>Value: {{node.resources[i].value}}</h4>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Smart Thermostat..." formControlName="name">
+                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>
+                <mat-hint>*Optional</mat-hint>
+              </mat-form-field>
+            </p>
+          </div>
+        </ng-template>
+      </form>
+    </mat-tab>
+    <mat-tab label="Actions">
+      <form class="actions" [formGroup]="nodeForm">
+        <h4 *ngIf="!node.actions" class="mat-error">No resources found!</h4>
+        <ng-template formArrayName="actions" ngFor [ngForOf]="actionsForm.controls" let-i="index">
+          <div [formGroupName]="i">
+            <h3>Type: {{node.actions[i].type}}</h3>
+            <h4>Value: {{node.actions[i].value}}</h4>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Smart Thermostat..." formControlName="name">
+                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>
+                <mat-hint>*Optional</mat-hint>
+              </mat-form-field>
+            </p>
+          </div>
+        </ng-template>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button [disabled]="(!nodeForm.valid || (!roomForm.valid && nodeForm.value.roomId === 'newRoom'))" (click)="addNode()">Add</button>
+</div>
+
