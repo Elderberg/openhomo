@@ -10,6 +10,7 @@ import { ExplorerNavHeaderPanelComponent } from './components/explorer-nav-heade
 import { MaterialModule } from './modules/material.module';
 import { ExplorerSnackBarAlertComponent } from './components/explorer-snack-bar-alert/explorer-snack-bar-alert.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DateAgoPipe} from './pipes/dateAgo.pipe.js';
 
 
 
@@ -21,7 +22,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     ExplorerAddNodeDialogComponent,
     ExplorerNodeListPanelComponent,
     ExplorerNavHeaderPanelComponent,
-    ExplorerSnackBarAlertComponent
+    ExplorerSnackBarAlertComponent,
+    DateAgoPipe
   ],
   exports: [
     ExplorerNavHeaderPanelComponent,
