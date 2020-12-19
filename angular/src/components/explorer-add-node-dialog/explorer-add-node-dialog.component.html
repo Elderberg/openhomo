@@ -1,62 +1,174 @@
-<h1 mat-dialog-title>Add node</h1>
+<!--<h1 mat-dialog-title>Add node</h1>-->
 <div mat-dialog-content>
-  <mat-tab-group mat-align-tabs="start" dynamicHeight>
-    <mat-tab label="General">
-      <div>
-        <form [formGroup]="nodeForm">
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Smart Thermostat..." formControlName="name">
-              <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Description</mat-label>
-              <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>
-              <mat-hint>*Optional</mat-hint>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Room</mat-label>
-              <mat-select formControlName="roomId">
-                <mat-option *ngFor="let room of rooms" [value]="room.id">
-                  {{room.name}}
-                </mat-option>
-                <mat-option value="newRoom">
-                  Add room
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </p>
-        </form>
-      </div>
-      <div *ngIf="nodeForm.value['roomId'] == 'newRoom'">
-        <h2>Add new room</h2>
-        <form [formGroup]="roomForm">
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Kitchen" formControlName="name">
-              <mat-error *ngIf="roomForm.invalid">Mandatory</mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Description</mat-label>
-              <textarea matInput placeholder="Main kitchen on the right..." formControlName="description"></textarea>
-              <mat-hint>*Optional</mat-hint>
-            </mat-form-field>
-          </p>
-        </form>
-      </div>
-    </mat-tab>
-    <mat-tab label="Resources">
-      <form class="resources" [formGroup]="nodeForm">
+<!--  <mat-tab-group mat-align-tabs="start" dynamicHeight>-->
+<!--    <mat-tab label="General">-->
+<!--      <div>-->
+<!--        <form [formGroup]="nodeForm">-->
+<!--          <p>-->
+<!--            <mat-form-field appearance="fill">-->
+<!--              <mat-label>Name</mat-label>-->
+<!--              <input matInput placeholder="Smart Thermostat..." formControlName="name">-->
+<!--              <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>-->
+<!--            </mat-form-field>-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <mat-form-field appearance="fill">-->
+<!--              <mat-label>Description</mat-label>-->
+<!--              <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>-->
+<!--              <mat-hint>*Optional</mat-hint>-->
+<!--            </mat-form-field>-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <mat-form-field appearance="fill">-->
+<!--              <mat-label>Room</mat-label>-->
+<!--              <mat-select formControlName="roomId">-->
+<!--                <mat-option *ngFor="let room of rooms" [value]="room.id">-->
+<!--                  {{room.name}}-->
+<!--                </mat-option>-->
+<!--                <mat-option value="newRoom">-->
+<!--                  Add room-->
+<!--                </mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+<!--          </p>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--      <div *ngIf="nodeForm.value['roomId'] == 'newRoom'">-->
+<!--        <h2>Add new room</h2>-->
+<!--        <form [formGroup]="roomForm">-->
+<!--          <p>-->
+<!--            <mat-form-field appearance="fill">-->
+<!--              <mat-label>Name</mat-label>-->
+<!--              <input matInput placeholder="Kitchen" formControlName="name">-->
+<!--              <mat-error *ngIf="roomForm.invalid">Mandatory</mat-error>-->
+<!--            </mat-form-field>-->
+<!--          </p>-->
+<!--          <p>-->
+<!--            <mat-form-field appearance="fill">-->
+<!--              <mat-label>Description</mat-label>-->
+<!--              <textarea matInput placeholder="Main kitchen on the right..." formControlName="description"></textarea>-->
+<!--              <mat-hint>*Optional</mat-hint>-->
+<!--            </mat-form-field>-->
+<!--          </p>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Resources">-->
+<!--      <form class="resources" [formGroup]="nodeForm">-->
+<!--        <h4 *ngIf="!node.resources" class="mat-error">No resources found!</h4>-->
+<!--        <ng-template formArrayName="resources" ngFor [ngForOf]="resourcesForm.controls" let-i="index">-->
+<!--          <div [formGroupName]="i">-->
+<!--            <h3>Type: {{node.resources[i].type}}</h3>-->
+<!--            <h4>Value: {{node.resources[i].value}}</h4>-->
+<!--            <p>-->
+<!--              <mat-form-field appearance="fill">-->
+<!--                <mat-label>Name</mat-label>-->
+<!--                <input matInput placeholder="Smart Thermostat..." formControlName="name">-->
+<!--                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>-->
+<!--              </mat-form-field>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--              <mat-form-field appearance="fill">-->
+<!--                <mat-label>Description</mat-label>-->
+<!--                <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>-->
+<!--                <mat-hint>*Optional</mat-hint>-->
+<!--              </mat-form-field>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+<!--      </form>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab label="Actions">-->
+<!--      <form class="actions" [formGroup]="nodeForm">-->
+<!--        <h4 *ngIf="!node.actions" class="mat-error">No resources found!</h4>-->
+<!--        <ng-template formArrayName="actions" ngFor [ngForOf]="actionsForm.controls" let-i="index">-->
+<!--          <div [formGroupName]="i">-->
+<!--            <h3>Type: {{node.actions[i].type}}</h3>-->
+<!--            <h4>Value: {{node.actions[i].value}}</h4>-->
+<!--            <p>-->
+<!--              <mat-form-field appearance="fill">-->
+<!--                <mat-label>Name</mat-label>-->
+<!--                <input matInput placeholder="Smart Thermostat..." formControlName="name">-->
+<!--                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>-->
+<!--              </mat-form-field>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--              <mat-form-field appearance="fill">-->
+<!--                <mat-label>Description</mat-label>-->
+<!--                <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>-->
+<!--                <mat-hint>*Optional</mat-hint>-->
+<!--              </mat-form-field>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </ng-template>-->
+<!--      </form>-->
+<!--    </mat-tab>-->
+<!--  </mat-tab-group>-->
+
+
+
+
+  <mat-vertical-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="nodeForm">
+      <form [formGroup]="nodeForm">
+        <ng-template matStepLabel>Complete node</ng-template>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Smart Thermostat..." formControlName="name">
+            <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Sets temperature based on..." formControlName="description"></textarea>
+            <mat-hint>*Optional</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Room</mat-label>
+            <mat-select formControlName="roomId" #matSelect>
+              <mat-option *ngFor="let room of rooms" [value]="room.id">
+                {{room.name}}
+              </mat-option>
+              <mat-option value="new_&Room">
+                Add room
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+      </form>
+    </mat-step>
+    <mat-step *ngIf="matSelect.value ==='new_&Room'" [stepControl]="nodeForm">
+      <form [formGroup]="roomForm">
+        <ng-template matStepLabel>Add room</ng-template>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Kitchen" formControlName="name">
+            <mat-error *ngIf="roomForm.invalid">Mandatory</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Main kitchen on the right..." formControlName="description"></textarea>
+            <mat-hint>*Optional</mat-hint>
+          </mat-form-field>
+        </p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step *ngIf="resourcesFormArray.controls.length > 0" [stepControl]="nodeForm" optional>
+      <form [formGroup]="resourcesForm">
+        <ng-template matStepLabel>Add resources</ng-template>
         <h4 *ngIf="!node.resources" class="mat-error">No resources found!</h4>
-        <ng-template formArrayName="resources" ngFor [ngForOf]="resourcesForm.controls" let-i="index">
+        <ng-template formArrayName="resources" ngFor [ngForOf]="resourcesFormArray.controls" let-i="index">
           <div [formGroupName]="i">
             <h3>Type: {{node.resources[i].type}}</h3>
             <h4>Value: {{node.resources[i].value}}</h4>
@@ -64,7 +176,7 @@
               <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Smart Thermostat..." formControlName="name">
-                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+                <mat-error *ngIf="resourcesForm.invalid">Mandatory</mat-error>
               </mat-form-field>
             </p>
             <p>
@@ -77,11 +189,12 @@
           </div>
         </ng-template>
       </form>
-    </mat-tab>
-    <mat-tab label="Actions">
-      <form class="actions" [formGroup]="nodeForm">
-        <h4 *ngIf="!node.actions" class="mat-error">No resources found!</h4>
-        <ng-template formArrayName="actions" ngFor [ngForOf]="actionsForm.controls" let-i="index">
+    </mat-step>
+    <mat-step *ngIf="actionsFormArray.controls.length > 0" [stepControl]="nodeForm" optional>
+      <form [formGroup]="resourcesForm">
+        <ng-template matStepLabel>Add resources</ng-template>
+        <h4 *ngIf="!node.resources" class="mat-error">No resources found!</h4>
+        <ng-template formArrayName="resources" ngFor [ngForOf]="actionsFormArray.controls" let-i="index">
           <div [formGroupName]="i">
             <h3>Type: {{node.actions[i].type}}</h3>
             <h4>Value: {{node.actions[i].value}}</h4>
@@ -89,7 +202,7 @@
               <mat-form-field appearance="fill">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Smart Thermostat..." formControlName="name">
-                <mat-error *ngIf="nodeForm.invalid">Mandatory</mat-error>
+                <mat-error *ngIf="actionsForm.invalid">Mandatory</mat-error>
               </mat-form-field>
             </p>
             <p>
@@ -102,8 +215,21 @@
           </div>
         </ng-template>
       </form>
-    </mat-tab>
-  </mat-tab-group>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>All these settings can be changed later</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+
+
+
+
+
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
