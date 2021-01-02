@@ -12,7 +12,7 @@ export default class NodeServer {
     run(baseUrl, path) {
         for (let node of this.nodes) {
             setInterval(() => {
-                axios.put(baseUrl + path, node).then((response) => {
+                axios.post(baseUrl + path, node).then((response) => {
                     this.nodeGenerator.generateResources()
                 }).catch((err) => {
                     console.error(err)
