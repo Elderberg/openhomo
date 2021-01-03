@@ -9,8 +9,8 @@ import {Observable} from 'rxjs';
 export class ExplorerRoomsService {
 
   BASE_URL = 'http://localhost:8080';
-  POST_ROOM_URI = '/api/rooms';
-  GET_ROOMS_URI = '/api/rooms';
+  POST_ROOM_URI = '/api/room';
+  GET_ROOMS_URI = '/api/room';
 
   constructor(private http: HttpClient) { }
 

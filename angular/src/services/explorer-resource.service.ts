@@ -9,8 +9,8 @@ import {Resource} from '../classes/Resource.class';
 export class ExplorerResourceService {
 
   BASE_URL = 'http://localhost:8080';
-  POST_RESOURCE_URI = '/api/resources';
-  GET_RESOURCE_URI = '/api/resources';
+  POST_RESOURCE_URI = '/api/resource';
+  GET_RESOURCE_URI = '/api/resource';
 
   constructor(private http: HttpClient) { }
 

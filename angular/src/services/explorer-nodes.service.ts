@@ -9,9 +9,9 @@ import {RxStompService} from '@stomp/ng2-stompjs';
 })
 export class ExplorerNodesService {
   BASE_URL = 'http://localhost:8080';
-  GET_NEW_NODES_URI = '/api/nodes/unregistered';
-  STOMP_NEW_NODES_URI = '/ws/nodes/unregistered';
-  POST_NODE_URI = '/api/nodes';
+  GET_NEW_NODES_URI = '/api/waitingList';
+  STOMP_NEW_NODES_URI = '/ws/waitingList';
+  POST_NODE_URI = '/api/node';
 
   constructor(private http: HttpClient, private stomp: RxStompService) { }
 
