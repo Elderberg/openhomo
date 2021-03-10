@@ -29,6 +29,7 @@ export class ExplorerNodesService {
 
   // [POST] add new node to api
   postNode = (node: Node): Observable<any> => {
+    console.log('this is node', node)
     return this.http.post(this.BASE_URL + this.POST_NODE_URI, node, {observe: 'response'})
   }
 
