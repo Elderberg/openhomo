@@ -15,6 +15,9 @@ export class ExplorerNodesService {
 
   constructor(private http: HttpClient, private stomp: RxStompService) { }
 
+  getNodes = (): Observable<any> => {
+    return this.http.get(this.BASE_URL + '/api/nodes')
+  }
   // [GET] gets initial node list from api
   getNewNodes = (): Observable<any> => {
     return this.http.get(this.BASE_URL + this.GET_NEW_NODES_URI)
